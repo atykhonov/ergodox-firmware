@@ -26,10 +26,10 @@ const uint8_t PROGMEM _kb_layout[KB_LAYERS][KB_ROWS][KB_COLUMNS] = {
 0,
 // left hand
     _equal,     _1,         _2,      _3,      _4,    _5, _esc,
-_backslash,     _Q,         _W,      _E,      _R,    _T,    1,
-      _tab,     _A,         _S,      _D,      _F,    _G,
+      _tab,     _Q,         _W,      _E,      _R,    _T,    1,
+      _capsLock,     _A,         _S,      _D,      _F,    _G,
    _shiftL,     _Z,         _X,      _C,      _V,    _B,    1,
-     _guiL, _grave, _backslash, _arrowL, _arrowR,
+     _guiL, _grave, _backslash, _arrowL, _altL,
                                                  _ctrlL, _altL,
                                               0,      0, _home,
                                             _bs,   _del,  _end,
@@ -38,7 +38,7 @@ _backslash,     _Q,         _W,      _E,      _R,    _T,    1,
 _bracketL, _Y,      _U,      _I,      _O,         _P, _bracketR,
            _H,      _J,      _K,      _L, _semicolon,    _quote,
         1, _N,      _M,  _comma, _period,     _slash,   _shiftR,
-               _arrowL, _arrowD, _arrowU,    _arrowR,     _guiR,
+               4, _guiR, _arrowU,    _arrowR,     _guiR,
  _altR, _ctrlR,
 _pageU,      0,      0,
 _pageD, _enter, _space ),
@@ -110,7 +110,29 @@ _F12,       _F6,    _F7,       _F8,       _F9,         _F10,   _power,
           0,         0, _period, _enter_kp, 0,
 0, 0,
 0, 0,     0,
-0, 0, _0_kp ),
+0, 0, _0_kp),
+
+	KB_MATRIX_LAYER(  // layout: layer 4: navigation
+// unused
+0,
+// left hand
+0,       0, 0, 0, 0, 0, 0,
+0,       0, 0, 0, 0, 0, 0,
+0,       _home, 0, _end, 0, 0,
+0,       0, 0, 0, 0, 0, 0,
+0, _insert, 0, 0, 0,
+                     0, 0,
+                  0, 0, 0,
+                  0, 0, 0,
+// right hand
+3, 0,     3, _equal_kp, _div_kp,   _mul_kp, 0,
+0, 0, _7_kp,     _8_kp,   _9_kp,   _bs, _bracketL,
+_arrowL, _arrowD, _arrowU,    _arrowR, 0, _enter,
+0, 0, _1_kp,     _2_kp,   _3_kp, _enter_kp, 0,
+          _guiR,         0, _period, _enter_kp, 0,
+0, 0,
+0, 0,     0,
+0, 0, _0_kp  )
 
 };
 
@@ -177,7 +199,7 @@ NULL,
          kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
                  kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
          lpush1, kprrel, kprrel, kprrel, kprrel, kprrel, s2kcap,
-                         kprrel, kprrel, kprrel, kprrel, kprrel,
+                         lpush4, kprrel, kprrel, kprrel, kprrel,
  kprrel, kprrel,
  kprrel,   NULL,   NULL,
  kprrel, kprrel, kprrel ),
@@ -251,6 +273,28 @@ NULL,
  ktrans, ktrans, ktrans,
  ktrans, ktrans, kprrel ),
 
+	KB_MATRIX_LAYER(  // press: layer 4: navigation
+// unused
+NULL,
+// left hand
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, kprrel, ktrans, kprrel, ktrans, ktrans,
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, kprrel, ktrans, ktrans, ktrans,
+                                                 ktrans, ktrans,
+                                         ktrans, ktrans, ktrans,
+                                         ktrans, ktrans, ktrans,
+// right hand
+       slponum, ktrans,slponum, kprrel, kprrel, kprrel, ktrans,
+        ktrans, ktrans, kprrel, kprrel, kprrel, kprrel, kprrel,
+                kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+        ktrans, ktrans, kprrel, kprrel, kprrel, kprrel, ktrans,
+                        kprrel, ktrans, kprrel, kprrel, ktrans,
+ ktrans, ktrans,
+ ktrans, ktrans, ktrans,
+ ktrans, ktrans, kprrel ),
+
 };
 
 // ----------------------------------------------------------------------------
@@ -275,7 +319,7 @@ NULL,
         kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
                 kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
          lpop1, kprrel, kprrel, kprrel, kprrel, kprrel, s2kcap,
-                        kprrel, kprrel, kprrel, kprrel, kprrel,
+                        lpop4, kprrel, kprrel, kprrel, kprrel,
  kprrel, kprrel,
  kprrel,   NULL,   NULL,
  kprrel, kprrel, kprrel ),
@@ -349,6 +393,27 @@ NULL,
  ktrans, ktrans, ktrans,
  ktrans, ktrans, kprrel ),
 
+	KB_MATRIX_LAYER(  // release: layer 4: navigation
+// unused
+NULL,
+// left hand
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, kprrel, ktrans, kprrel, ktrans, ktrans,
+ ktrans, ktrans, ktrans, ktrans, ktrans, ktrans, ktrans,
+ ktrans, kprrel, ktrans, ktrans, ktrans,
+                                                 ktrans, ktrans,
+                                         ktrans, ktrans, ktrans,
+                                         ktrans, ktrans, ktrans,
+// right hand
+          NULL, ktrans,   NULL, kprrel, kprrel, kprrel, ktrans,
+        ktrans, ktrans, kprrel, kprrel, kprrel, kprrel, kprrel,
+                kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
+        ktrans, ktrans, kprrel, kprrel, kprrel, kprrel, ktrans,
+                        kprrel, ktrans, kprrel, kprrel, ktrans,
+ ktrans, ktrans,
+ ktrans, ktrans, ktrans,
+ ktrans, ktrans, kprrel ),
 
 	KB_MATRIX_LAYER(  // release: layer 3: nothing (just making sure unused
 			  // functions don't get compiled out)
@@ -367,4 +432,3 @@ NULL,
  lpush7,  lpop7,   NULL,   NULL,   NULL,   NULL,   NULL,   NULL )
 
 };
-
